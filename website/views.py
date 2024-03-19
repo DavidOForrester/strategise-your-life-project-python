@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request
+from .models import StrategiseYourLife
+from . import db
 
 views = Blueprint('views', __name__)
 
@@ -10,7 +12,12 @@ def home():
     importance = request.form.get('importance')
     timeInvested = request.form.get('time-invested')
 
+    #if strageticLifeUnit == ""
+    newStrategiseYourLife = StrategiseYourLife(strategicLifeUnits=strageticLifeUnit, satisfaction=satisfaction, importance=importance, timeInvested=timeInvested)
+    db.session.add(newStrategiseYourLife)
+    db.session.commit()
 
-    #you can add error checking here.
+    #run the python visual code here
+    print('data saved')
 
   return render_template("home.html")
