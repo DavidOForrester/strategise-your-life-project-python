@@ -13,7 +13,7 @@ def CreateVisual():
   
   #defining the colours for the categories
 
-  fig = plt.figure(figsize=(15,15))
+  fig = plt.figure(figsize=(10,10))
   ax = fig.add_subplot(111)
 
   #Setting up the text on the plot
@@ -30,7 +30,7 @@ def CreateVisual():
   plt.plot([0,11],[5,5], linewidth=1, color='grey' )
 
   #Plots the data points
-  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*10000),# c=colour_list)
+  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100),# c=colour_list)
 
   #adds the labels to the points
   for i, txt in enumerate(df['strategicLifeUnits']):

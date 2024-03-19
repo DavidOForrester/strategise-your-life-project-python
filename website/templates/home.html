@@ -4,39 +4,21 @@
 {% block table_content %}
 <form method="POST">
   <h3 align="center">table for capturing all the user data</h3>
-  <div class="form-group">
-    <label for="strategic-life-unit">Strategic Life Unit</label>
-    <input
-      type="text"
-      class="form-control"
-      id="strategic-life-unit"
-      name="strategic-life-unit"
-      placeholder="Select a strategic life unit"
-    />
-    <label for="satisfaction">Satisfaction</label>
-    <input
-      type="number"
-      class="form-control"
-      id="satisfaction"
-      name="satisfaction"
-      placeholder="Enter satisfaction"
-    />
-    <label for="importance">Importance</label>
-    <input
-      type="number"
-      class="form-control"
-      id="importance"
-      name="importance"
-      placeholder="Enter importance"
-    />
-    <label for="time-invested">Time Invested</label>
-    <input
-      type="number"
-      class="form-control"
-      id="time-invested"
-      name="time-invested"
-      placeholder="Enter time invested"
-    />
+  {{ form.csrf_token }}
+  {{ form.opts }}
+  <ul>
+    {% for error in form.opts.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+  <div>
+    {{ form.satisfaction }}
+  </div>
+  <div>
+    {{ form.importance }}
+  </div>
+  <div>
+    {{ form.timeInvested }}
   </div>
   <br />
   <div align="center">

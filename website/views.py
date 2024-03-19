@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from website.form import SimpleForm
 from website.visuals import CreateVisual
 from .models import StrategiseYourLife
 from . import db
@@ -7,13 +8,13 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
+  form = SimpleForm()
+
   if request.method == 'POST':
-    strageticLifeUnit = request.form.get('strategic-life-unit')
+    strageticLifeUnit = request.form.get('opts')
     satisfaction = request.form.get('satisfaction')
     importance = request.form.get('importance')
-    timeInvested = request.form.get('time-invested')
-
-    print(request.form)
+    timeInvested = request.form.get('timeinvested')
 
     if satisfaction == "":
       print('missing satisfaction data')
@@ -30,4 +31,4 @@ def home():
       print('data saved')
       CreateVisual()
 
-  return render_template("home.html")
+  return render_template("home.html", form=form)
