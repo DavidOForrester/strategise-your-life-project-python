@@ -5,9 +5,9 @@
 <form method="POST">
   <h3 align="center">table for capturing all the user data</h3>
   {{ form.csrf_token }}
-  {{ form.opts }}
+  {{ form.strategicLifeUnits }}
   <ul>
-    {% for error in form.opts.errors %}
+    {% for error in form.strategicLifeUnits.errors %}
     <li>{{ error }}</li>
     {% endfor %}
   </ul>

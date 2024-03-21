@@ -1,7 +1,10 @@
+import sqlite3
 from flask import Blueprint, render_template, request
+import pandas as pd
 from website.form import SimpleForm
+from website.models import StrategiseYourLife
+from website.starting_data import CreateData
 from website.visuals import CreateVisual
-from .models import StrategiseYourLife
 from . import db
 
 views = Blueprint('views', __name__)
@@ -10,8 +13,17 @@ views = Blueprint('views', __name__)
 def home():
   form = SimpleForm()
 
+  #connects to the database
+  conn = sqlite3.connect('instance/database.db')
+  df = pd.read_sql('SELECT * FROM strategise_your_life', conn)
+
+  #check to see if the database is empty
+  if len(df) == 0:
+    #runs the function to create the starting data
+    CreateData()
+
   if request.method == 'POST':
-    strageticLifeUnit = request.form.get('opts')
+    strageticLifeUnit = request.form.get('strategicLifeUnits')
     satisfaction = request.form.get('satisfaction')
     importance = request.form.get('importance')
     timeInvested = request.form.get('timeinvested')
@@ -22,13 +34,12 @@ def home():
       print('missing importance data')
     elif timeInvested == "":
       print('missing time invested data')
-    else:
-      newStrategiseYourLife = StrategiseYourLife(strategicLifeUnits=strageticLifeUnit, satisfaction=satisfaction, importance=importance, timeInvested=timeInvested)
-      db.session.add(newStrategiseYourLife)
-      db.session.commit()
+    #else:
+      #newStrategiseYourLife = StrategiseYourLife(strategicLifeUnits=strageticLifeUnit, satisfaction=satisfaction, importance=importance, timeInvested=timeInvested)
+      #db.session.add(newStrategiseYourLife)
+      #db.session.commit()
       
       #run the python visual code here
-      print('data saved')
-      CreateVisual()
+      #CreateVisual()
 
   return render_template("home.html", form=form)
