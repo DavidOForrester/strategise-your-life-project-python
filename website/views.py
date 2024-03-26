@@ -23,23 +23,26 @@ def home():
     CreateData()
 
   if request.method == 'POST':
-    strageticLifeUnit = request.form.get('strategicLifeUnits')
+    strategicLifeUnit = request.form.get('strategicLifeUnits')
     satisfaction = request.form.get('satisfaction')
     importance = request.form.get('importance')
-    timeInvested = request.form.get('timeinvested')
+    timeInvested = request.form.get('timeInvested')
 
-    if satisfaction == "":
+    if strategicLifeUnit == "__None":
+      print('missing strategic life unit data')
+    elif satisfaction == "":
       print('missing satisfaction data')
     elif importance == "":
       print('missing importance data')
     elif timeInvested == "":
       print('missing time invested data')
-    #else:
-      #newStrategiseYourLife = StrategiseYourLife(strategicLifeUnits=strageticLifeUnit, satisfaction=satisfaction, importance=importance, timeInvested=timeInvested)
-      #db.session.add(newStrategiseYourLife)
-      #db.session.commit()
+    else:
+      #updating database record
+      curs = conn.cursor()
+      curs.execute(f"UPDATE strategise_your_life SET satisfaction = {satisfaction}, importance = {importance}, timeInvested = {timeInvested} WHERE id = {strategicLifeUnit}")
+      conn.commit()
       
       #run the python visual code here
-      #CreateVisual()
+      CreateVisual()
 
   return render_template("home.html", form=form)
