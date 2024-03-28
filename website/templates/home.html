@@ -3,27 +3,27 @@
 
 {% block table_content %}
 <form method="POST">
-  <h3 align="center">table for capturing all the user data</h3>
-  {{ form.csrf_token }}
-  {{ form.strategicLifeUnits }}
-  <ul>
-    {% for error in form.strategicLifeUnits.errors %}
-    <li>{{ error }}</li>
-    {% endfor %}
-  </ul>
-  <div>
-    {{ form.satisfaction }}
-  </div>
-  <div>
-    {{ form.importance }}
-  </div>
-  <div>
-    {{ form.timeInvested }}
-  </div>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Strategic Life Unit</th>
+        <th>Satisfaction</th>
+        <th>Importance</th>
+        <th>Time Invested</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for strategicLifeUnit, simpleForm in zip(strategicLifeUnits, form.simpleForm) %}
+      <tr>
+        <td>{{ strategicLifeUnit }}</td>
+        <td>{{ simpleForm.satisfaction }}</td>
+        <td>{{ simpleForm.importance }}</td>
+        <td>{{ simpleForm.timeInvested }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {{ form.submit }}
 </form>
 {% endblock %}
 

@@ -1,7 +1,7 @@
 import sqlite3
 from flask import Blueprint, render_template, request
 import pandas as pd
-from website.form import SimpleForm
+from website.form import FullForm
 from website.models import StrategiseYourLife
 from website.starting_data import CreateData
 from website.visuals import CreateVisual
@@ -11,8 +11,6 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
-  form = SimpleForm()
-
   #connects to the database
   conn = sqlite3.connect('instance/database.db')
   df = pd.read_sql('SELECT * FROM strategise_your_life', conn)
@@ -22,27 +20,21 @@ def home():
     #runs the function to create the starting data
     CreateData()
 
-  if request.method == 'POST':
-    strategicLifeUnit = request.form.get('strategicLifeUnits')
-    satisfaction = request.form.get('satisfaction')
-    importance = request.form.get('importance')
-    timeInvested = request.form.get('timeInvested')
+  cur = conn.cursor()
+  cur.execute("SELECT * FROM strategise_your_life")
+  data = cur.fetchall()
 
-    if strategicLifeUnit == "__None":
-      print('missing strategic life unit data')
-    elif satisfaction == "":
-      print('missing satisfaction data')
-    elif importance == "":
-      print('missing importance data')
-    elif timeInvested == "":
-      print('missing time invested data')
-    else:
-      #updating database record
-      curs = conn.cursor()
-      curs.execute(f"UPDATE strategise_your_life SET satisfaction = {satisfaction}, importance = {importance}, timeInvested = {timeInvested} WHERE id = {strategicLifeUnit}")
-      conn.commit()
+  #creates the form
+  form = FullForm()
+
+  strategicLifeUnits = ['Significant Other','Family','Friends','Physical Health/sports','Mental Health/mindfulness','Spirituality/faith','Community/citizenship','Societal engagement','Job/career','Education/learning','Finances','Hobbies/interests','Online entertainment','Offline entertainment''Physiological needs','Activities of daily living']
+
+
+  if request.method == 'POST':
+      #can get the values back from the form
+      print(request.form.get('simpleForm-2-satisfaction'))
       
       #run the python visual code here
       CreateVisual()
 
-  return render_template("home.html", form=form)
+  return render_template("home.html", data=data, form=form, strategicLifeUnits=strategicLifeUnits, zip=zip)
