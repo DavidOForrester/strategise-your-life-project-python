@@ -22,12 +22,12 @@ def CreateVisual():
   plt.ylabel('Importance')
 
   #x and y limits
-  plt.xlim((0,10))
-  plt.ylim((0,10))
+  plt.xlim((0,100))
+  plt.ylim((0,100))
 
   #adding the 4 quadrant lines
-  plt.plot([5,5],[0,11], linewidth=1, color='grey' )
-  plt.plot([0,11],[5,5], linewidth=1, color='grey' )
+  plt.plot([50,50],[0,100], linewidth=1, color='grey' )
+  plt.plot([0,100],[50,50], linewidth=1, color='grey' )
 
   #Plots the data points
   plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100),# c=colour_list)
