@@ -25,8 +25,8 @@ def CreateData():
   for row in area:
       for i in range(0, len(row), 2):
           pair = row[i:i+2]
-          print(pair[1])
 
+          #pre loads the database
           sampleData = StrategiseYourLife(strategicLifeUnits=pair[0], strategicLifeAreas=pair[1], satisfaction=0, importance=0, timeInvested=0)
           db.session.add(sampleData)
           db.session.commit()
