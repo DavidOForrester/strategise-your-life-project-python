@@ -12,6 +12,16 @@ def CreateVisual():
   df = pd.read_sql('SELECT * FROM strategise_your_life', conn)
   
   #defining the colours for the categories
+  colours = {
+    'Relationships': '#c92f16', 
+    'Body mind and spirituality': '#3374c1', 
+    'Community and society': '#f5bf32',
+    'Job learning and finances': '#469c34',
+    'Interests and entertainment': '#8e22c9',
+    'Personal care': '#434c4f'
+  }
+
+  colour_list = [colours[group] for group in df['strategicLifeAreas']]
 
   fig = plt.figure(figsize=(10,10))
   ax = fig.add_subplot(111)
@@ -30,7 +40,7 @@ def CreateVisual():
   plt.plot([0,100],[50,50], linewidth=1, color='grey' )
 
   #Plots the data points
-  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100),# c=colour_list)
+  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100, c=colour_list)
 
   #adds the labels to the points
   for i, txt in enumerate(df['strategicLifeUnits']):
