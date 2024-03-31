@@ -54,8 +54,8 @@ def home():
             satisfaction = 0
         elif importance == "":
             importance = 0
-        elif timeInvested == "":
-            timeInvested = 0
+        elif timeInvested == "" or timeInvested == '0':
+            timeInvested = 0.1
 
         #determines the time total
         timeTotal = timeTotal + int(timeInvested)
