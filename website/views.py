@@ -26,6 +26,8 @@ def home():
   #list of the strategic life units to add as the first col of the table
   strategicLifeUnits = ['Significant Other','Family','Friends','Physical Health/sports','Mental Health/mindfulness','Spirituality/faith','Community/citizenship','Societal engagement','Job/career','Education/learning','Finances','Hobbies/interests','Online entertainment','Offline entertainment','Physiological needs','Activities of daily living']
 
+  
+
   if request.method == 'POST':
       #loads the immutable dic
       data = request.form
@@ -35,6 +37,9 @@ def home():
 
       #groups the dic in rows
       grouped_data = [dataList[i:i+3] for i in range(0, len(dataList), 3)]
+
+      #set total time to 0
+      timeTotal = 0
 
       # Iterate over groups
       for group in grouped_data[:-1]:
@@ -52,6 +57,9 @@ def home():
         elif timeInvested == "":
             timeInvested = 0
 
+        #determines the time total
+        timeTotal = timeTotal + int(timeInvested)
+
         #updates the records in the database
         curs = conn.cursor()
         curs.execute(f"UPDATE strategise_your_life SET satisfaction = {satisfaction}, importance = {importance}, timeInvested = {timeInvested} WHERE id = {strategicLifeUnit}")
@@ -60,4 +68,4 @@ def home():
       #run the python visual code here
       CreateVisual()
 
-  return render_template("home.html", data=data, form=form, strategicLifeUnits=strategicLifeUnits, zip=zip)
+  return render_template("home.html", data=data, form=form, strategicLifeUnits=strategicLifeUnits, zip=zip, timeTotal=timeTotal)

@@ -9,7 +9,7 @@
         <th>Strategic Life Unit</th>
         <th>Satisfaction</th>
         <th>Importance</th>
-        <th>Time Invested</th>
+        <th>Time Invested (Weekly)</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +21,12 @@
         <td>{{ simpleForm.timeInvested }}</td>
       </tr>
       {% endfor %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total: {{ timeTotal }} / 168</td>
+      </tr>
     </tbody>
   </table>
   {{ form.submit }}

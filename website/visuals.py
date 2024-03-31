@@ -34,7 +34,7 @@ def CreateVisual():
 
   #adds the labels to the points
   for i, txt in enumerate(df['strategicLifeUnits']):
-    ax.annotate(txt, (df['satisfaction'][i], df['importance'][i]), xytext=(df['satisfaction'][i]+0.3, df['importance'][i]+0.3), arrowprops=dict(arrowstyle='-'))
+    ax.annotate(txt, (df['satisfaction'][i], df['importance'][i]), xytext=(df['satisfaction'][i]+3, df['importance'][i]+3), arrowprops=dict(arrowstyle='-'))
 
   # Turn off tick labels
   ax.set_yticklabels([])
