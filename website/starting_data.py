@@ -3,22 +3,22 @@ from . import db
 
 def CreateData():
   area = [
-    ['Significant Other',	'Relationships'],
+    ['Partner',	'Relationships'],
     ['Family',	'Relationships'],
     ['Friends',	'Relationships'],
-    ['Physical Health/sports',	'Body mind and spirituality'],
-    ['Mental Health/mindfulness',	'Body mind and spirituality'],
-    ['Spirituality/faith',	'Body mind and spirituality'],
-    ['Community/citizenship',	'Community and society'],
-    ['Societal engagement',	'Community and society'],
-    ['Job/career',	'Job learning and finances'],
-    ['Education/learning',	'Job learning and finances'],
+    ['Exercise',	'Body mind and spirituality'],
+    ['Mental health',	'Body mind and spirituality'],
+    ['Faith',	'Body mind and spirituality'],
+    ['Community',	'Community and society'],
+    ['Volunteering',	'Community and society'],
+    ['Career',	'Job learning and finances'],
+    ['Education',	'Job learning and finances'],
     ['Finances',	'Job learning and finances'],
-    ['Hobbies/interests',	'Interests and entertainment'],
-    ['Online entertainment',	'Interests and entertainment'],
-    ['Offline entertainment',	'Interests and entertainment'],
-    ['Physiological needs',	'Personal care'],
-    ['Activities of daily living',	'Personal care'],
+    ['Hobbies',	'Interests and entertainment'],
+    ['Online entmt',	'Interests and entertainment'],
+    ['Offline entmt',	'Interests and entertainment'],
+    ['Eating/Sleeping',	'Personal care'],
+    ['Daily living',	'Personal care'],
 ]
 
   # Iterate over the 2x16 area, considering elements grouped in pairs

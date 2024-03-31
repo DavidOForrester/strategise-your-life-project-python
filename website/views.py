@@ -24,7 +24,7 @@ def home():
   form = FullForm()
 
   #list of the strategic life units to add as the first col of the table
-  strategicLifeUnits = ['Significant Other','Family','Friends','Physical Health/sports','Mental Health/mindfulness','Spirituality/faith','Community/citizenship','Societal engagement','Job/career','Education/learning','Finances','Hobbies/interests','Online entertainment','Offline entertainment','Physiological needs','Activities of daily living']
+  strategicLifeUnits = ['Partner','Family','Friends','Exercise','Mental health','Faith','Community','Volunteering','Career','Education','Finances','Hobbies','Online entmt','Offline entmt','Eating/Sleeping','Daily living']
 
   
 
