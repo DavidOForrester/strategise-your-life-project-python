@@ -48,8 +48,8 @@ def CreateVisual():
   plt.ylim((-10,110))
 
   #adding the 4 quadrant lines
-  plt.plot([50,50],[-10,110], linewidth=1, color='grey' )
-  plt.plot([-10,110],[50,50], linewidth=1, color='grey' )
+  plt.plot([50,50],[-10,110], linewidth=1, color='grey', linestyle="dashed", zorder=0)
+  plt.plot([-10,110],[50,50], linewidth=1, color='grey', linestyle="dashed", zorder=0)
 
   #Plots the data points
   plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*300, c=colour_list, edgecolors='white')
