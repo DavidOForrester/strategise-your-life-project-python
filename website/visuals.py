@@ -4,6 +4,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sqlite3
+from adjustText import adjust_text
 
 
 def CreateVisual():
@@ -16,6 +17,8 @@ def CreateVisual():
 
   #resets the data frames index to ensure the labels and points align
   df = df.reset_index(drop=True)
+
+  totalTime = sum(df['timeInvested'])
 
   #loading the font
   hfont = {'fontname':'Helvetica'}
@@ -49,12 +52,23 @@ def CreateVisual():
   plt.plot([-10,110],[50,50], linewidth=1, color='grey' )
 
   #Plots the data points
-  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100, c=colour_list, edgecolors='white')
-  print(df['satisfaction'])
+  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*300, c=colour_list, edgecolors='white')
 
   #adds the labels to the points
+  texts = []
+  
   for i, txt in enumerate(df['strategicLifeUnits']):
-    ax.annotate(txt, (df['satisfaction'][i], df['importance'][i]), xytext=(df['satisfaction'][i]+3, df['importance'][i]+3), arrowprops=dict(arrowstyle='-'), **hfont)
+    heightAdjust = 0 #(df['timeInvested'][i] / totalTime) * 110 / 2
+
+    texts.append(ax.annotate(txt, 
+                (df['satisfaction'][i], 
+                 df['importance'][i]+heightAdjust), 
+                 xytext=(df['satisfaction'][i]+5, df['importance'][i]), 
+                 arrowprops=dict(arrowstyle='-', lw=0.5), 
+                 bbox = dict(boxstyle="round", facecolor="white"),
+                 **hfont))
+    
+  adjust_text(texts)
 
   # Turn off tick labels
   ax.set_yticklabels([])
