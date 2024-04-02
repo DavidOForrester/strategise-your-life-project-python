@@ -11,6 +11,12 @@ def CreateVisual():
 
   df = pd.read_sql('SELECT * FROM strategise_your_life', conn)
 
+  #updates the sort order to put the smaller dots on top
+  df = df.sort_values(by="timeInvested", ascending=False)
+
+  #resets the data frames index to ensure the labels and points align
+  df = df.reset_index(drop=True)
+
   #loading the font
   hfont = {'fontname':'Helvetica'}
   
@@ -43,7 +49,8 @@ def CreateVisual():
   plt.plot([-10,110],[50,50], linewidth=1, color='grey' )
 
   #Plots the data points
-  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100, c=colour_list)
+  plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*100, c=colour_list, edgecolors='white')
+  print(df['satisfaction'])
 
   #adds the labels to the points
   for i, txt in enumerate(df['strategicLifeUnits']):
