@@ -25,8 +25,9 @@ def home():
 
   #list of the strategic life units to add as the first col of the table
   strategicLifeUnits = ['Partner','Family','Friends','Exercise','Mental health','Faith','Community','Volunteering','Career','Education','Finances','Hobbies','Online entmt','Offline entmt','Eating/Sleeping','Daily living']
-
   
+  #table background colours
+  tableCellColour = ['#fcedf0','#fcedf0','#fcedf0','#e3f4fa','#e3f4fa','#e3f4fa','#fef7e3','#fef7e3','#ecf6ee','#ecf6ee','#ecf6ee','#f5eafa','#f5eafa','#f5eafa','#f3f6f8','#f3f6f8']
 
   if request.method == 'POST':
       #loads the immutable dic
@@ -68,4 +69,10 @@ def home():
       #run the python visual code here
       CreateVisual()
 
-  return render_template("home.html", data=data, form=form, strategicLifeUnits=strategicLifeUnits, zip=zip, timeTotal=timeTotal)
+  return render_template("home.html", 
+                         data=data, 
+                         form=form, 
+                         strategicLifeUnits=strategicLifeUnits, 
+                         zip=zip, 
+                         timeTotal=timeTotal, 
+                         tableCellColour=tableCellColour)

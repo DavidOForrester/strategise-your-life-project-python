@@ -7,7 +7,7 @@
     Satisfaction: How staisfied with the unit are you now.<br>
     Importance: How importance each unit is to you.
   </div>
-  <table>
+  <table border="1">
     <thead>
       <tr>
         <th>Strategic Life Unit</th>
@@ -17,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      {% for strategicLifeUnit, simpleForm in zip(strategicLifeUnits, form.simpleForm) %}
-      <tr>
+      {% for strategicLifeUnit, simpleForm, tableCellColour in zip(strategicLifeUnits, form.simpleForm, tableCellColour) %}
+      <tr bgcolor = {{ tableCellColour }}>
         <td>{{ strategicLifeUnit }}</td>
         <td>{{ simpleForm.satisfaction }}</td>
         <td>{{ simpleForm.importance }}</td>
