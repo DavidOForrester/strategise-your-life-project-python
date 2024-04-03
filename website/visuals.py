@@ -48,8 +48,8 @@ def CreateVisual():
   plt.ylim((-10,110))
 
   #adding the 4 quadrant lines
-  plt.plot([50,50],[-10,110], linewidth=1, color='grey', linestyle="dashed", zorder=0)
-  plt.plot([-10,110],[50,50], linewidth=1, color='grey', linestyle="dashed", zorder=0)
+  plt.plot([50,50],[-10,110], linewidth=1, color='grey', linestyle="dashed", zorder=1)
+  plt.plot([-10,110],[50,50], linewidth=1, color='grey', linestyle="dashed", zorder=1)
 
   #Plots the data points
   plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*300, c=colour_list, edgecolors='white')
@@ -79,9 +79,12 @@ def CreateVisual():
   ax.annotate("HIGH", (-10,-10), xytext=(104,-13))
   ax.annotate("LOW", (-10,-10), xytext=(-9,-13))
 
+  #adding top left rec to help call out
+  rec = plt.Rectangle((-10,50), 60, 110, color="#ebebeb", zorder=0)
+  ax.add_patch(rec)
+
   # Turn off tick labels
   ax.set_xticks([])
   ax.set_yticks([])
 
   plt.savefig('website/static/visual.png') 
-
