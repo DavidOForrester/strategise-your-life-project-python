@@ -35,7 +35,7 @@ def CreateVisual():
 
   colour_list = [colours[group] for group in df['strategicLifeAreas']]
 
-  fig = plt.figure(figsize=(10,10))
+  fig = plt.figure(figsize=(8,8))
   ax = fig.add_subplot(111)
 
   #Setting up the text on the plot

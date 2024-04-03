@@ -14,20 +14,28 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
-
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
     <h1>Strategise Your Life</h1>
-
-    <div class="table_container">
-      {% block table_content %}
-      {% endblock %}
+    <div>
+      Satisfaction: How staisfied with the unit are you now.<br />
+      Importance: How importance each unit is to you.
     </div>
-    <br>
-    <div class="visual_container">
-      {% block visual_content %}
-      {% endblock %}
+    <br />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-">
+          <div class="table_container">
+            {% block table_content %} {% endblock %}
+          </div>
+        </div>
+        <div class="col-xs-">
+          <div class="visual_container">
+            {% block visual_content %} {% endblock %}
+          </div>
+        </div>
+      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
