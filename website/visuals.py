@@ -70,9 +70,18 @@ def CreateVisual():
     
   adjust_text(texts)
 
+  #adding high and low text and arrows
+  #y axis
+  ax.annotate("HIGH", (-10,110), xytext=(-13, 104), rotation=90)
+  ax.annotate("LOW", (-10,-10), xytext=(-13,-8), rotation=90)
+
+  #x axis
+  ax.annotate("HIGH", (-10,-10), xytext=(104,-13))
+  ax.annotate("LOW", (-10,-10), xytext=(-9,-13))
+
   # Turn off tick labels
-  ax.set_yticklabels([])
-  ax.set_xticklabels([])
+  ax.set_xticks([])
+  ax.set_yticks([])
 
   plt.savefig('website/static/visual.png') 
 
