@@ -50,6 +50,9 @@ def home():
         importance = data.get(group[1])
         timeInvested = data.get(group[2])
 
+        #determines the time total
+        timeTotal = timeTotal + float(timeInvested)
+
         #checks if the user has left cells blank
         if satisfaction == "":
             satisfaction = 0
@@ -57,9 +60,6 @@ def home():
             importance = 0
         elif timeInvested == "" or timeInvested == '0':
             timeInvested = 0.1
-
-        #determines the time total
-        timeTotal = timeTotal + int(timeInvested)
 
         #updates the records in the database
         curs = conn.cursor()
