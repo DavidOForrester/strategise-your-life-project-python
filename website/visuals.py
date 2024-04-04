@@ -80,11 +80,24 @@ def CreateVisual():
   ax.annotate("LOW", (-10,-10), xytext=(-9,-13))
 
   #adding top left rec to help call out
-  rec = plt.Rectangle((-10,50), 60, 110, color="#ebebeb", zorder=0)
-  ax.add_patch(rec)
+  recTL = plt.Rectangle((-10,50), 60, 110, color="#ebebeb", zorder=0)
+  ax.add_patch(recTL)
+
+  recTR = plt.Rectangle((50,50), 60, 110, color="#f5f5f5", zorder=0)
+  ax.add_patch(recTR)
+
+  recBL = plt.Rectangle((-10,-10), 60, 60, color="#f5f5f5", zorder=0)
+  ax.add_patch(recBL)
+
+  recBR = plt.Rectangle((50,-10), 60, 60, color="#f5f5f5", zorder=0)
+  ax.add_patch(recBR)
 
   # Turn off tick labels
   ax.set_xticks([])
   ax.set_yticks([])
+  ax.spines['top'].set_visible(False)
+  ax.spines['bottom'].set_visible(False)
+  ax.spines['left'].set_visible(False)
+  ax.spines['right'].set_visible(False)
 
   plt.savefig('website/static/visual.png', bbox_inches='tight') 
