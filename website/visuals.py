@@ -87,4 +87,4 @@ def CreateVisual():
   ax.set_xticks([])
   ax.set_yticks([])
 
-  plt.savefig('website/static/visual.png') 
+  plt.savefig('website/static/visual.png', bbox_inches='tight') 
