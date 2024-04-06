@@ -39,7 +39,6 @@ def CreateVisual():
   ax = fig.add_subplot(111)
 
   #Setting up the text on the plot
-  plt.title('Strategise Your Life', **hfont)
   plt.xlabel('Satisfaction', **hfont)
   plt.ylabel('Importance', **hfont)
 
@@ -100,4 +99,4 @@ def CreateVisual():
   ax.spines['left'].set_visible(False)
   ax.spines['right'].set_visible(False)
 
-  plt.savefig('website/static/visual.png', bbox_inches='tight') 
+  plt.savefig('static/visual.png', bbox_inches='tight') 

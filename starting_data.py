@@ -1,7 +1,6 @@
-from website.models import StrategiseYourLife
-from . import db
+import sqlite3
 
-def CreateData():
+def CreateData(db):
   area = [
     ['Partner',	'Relationships'],
     ['Family',	'Relationships'],
@@ -27,6 +26,15 @@ def CreateData():
           pair = row[i:i+2]
 
           #pre loads the database
-          sampleData = StrategiseYourLife(strategicLifeUnits=pair[0], strategicLifeAreas=pair[1], satisfaction=0, importance=0, timeInvested=0)
-          db.session.add(sampleData)
-          db.session.commit()
+          conn = sqlite3.connect('instance/database.db')
+
+          curs = conn.cursor()
+
+          sql = f"""
+          INSERT INTO strategise_your_life (strategicLifeUnits, strategicLifeAreas, satisfaction, importance, timeInvested) 
+          VALUES ('{pair[0]}', '{pair[1]}', 50, 50, 0)
+          """
+
+          curs.execute(sql)
+
+          conn.commit()
