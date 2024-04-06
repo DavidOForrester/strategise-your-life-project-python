@@ -7,11 +7,7 @@ import sqlite3
 from adjustText import adjust_text
 
 
-def CreateVisual():
-  conn = sqlite3.connect('instance/database.db')
-
-  df = pd.read_sql('SELECT * FROM strategise_your_life', conn)
-
+def CreateVisual(df):
   #updates the sort order to put the smaller dots on top
   df = df.sort_values(by="timeInvested", ascending=False)
 
