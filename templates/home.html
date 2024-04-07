@@ -21,15 +21,17 @@
       </tr>
       {% endfor %}
       <tr>
-        <td></td>
+        <td>{{ form.submit }}</td>
         <td></td>
         <td></td>
         <td>Total: {{ timeTotal }} / 168</td>
       </tr>
     </tbody>
   </table>
-  {{ form.submit }}
 </form>
+<a href="/download_csv">
+  <button>Download Data</button>
+</a>
 {% endblock %}
 
 {% block visual_content %}

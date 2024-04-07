@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file, session
 import pandas as pd
 from form import FullForm
 from visuals import CreateVisual
 import base64
+from io import BytesIO
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fdjkslrewpfjdsklsdfjker'
@@ -72,6 +73,9 @@ def home():
       buf = CreateVisual(df)
       visualData = base64.b64encode(buf.getbuffer()).decode("ascii")
 
+      #saves the data frame into the session
+      session["data"] = df.to_json()
+
   return render_template("home.html", 
                          data=data, 
                          form=form, 
@@ -80,6 +84,19 @@ def home():
                          timeTotal=timeTotal, 
                          tableCellColour=tableCellColour,
                          visual=visualData)
+
+@app.route('/download_csv')
+def download_csv():
+  #gets the json data from from the session
+  df = session.get('data')
+  df = pd.read_json(df, dtype=False)
+
+  #sets up data frame into a csv steam
+  buf = BytesIO()
+  df.to_csv(buf)
+  buf.seek(0)
+
+  return send_file(buf,download_name="data.csv",mimetype="text/csv")
 
 if __name__ == '__main__':
   app.run(debug=True)
