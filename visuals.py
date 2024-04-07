@@ -53,11 +53,16 @@ def CreateVisual(df):
   for i, txt in enumerate(df['strategicLifeUnits']):
     heightAdjust = 0 #(df['timeInvested'][i] / totalTime) * 110 / 2
 
+    if df['satisfaction'][i] > 70:
+      labelOffset = -15
+    else:
+      labelOffset = 5
+
     texts.append(ax.annotate(txt, 
                 (df['satisfaction'][i], 
                  df['importance'][i]+heightAdjust), 
-                 xytext=(df['satisfaction'][i]+5, df['importance'][i]), 
-                 arrowprops=dict(arrowstyle='-', lw=0.5), 
+                 xytext=(df['satisfaction'][i]+labelOffset, df['importance'][i]), 
+                 arrowprops=dict(arrowstyle='-', lw=1), 
                  bbox = dict(boxstyle="round", facecolor="white"),
                  **hfont))
     
