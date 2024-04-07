@@ -26,6 +26,7 @@ def home():
   timeTotal = 0
 
   data = ""
+  visualData = ""
 
   #list of the strategic life units to add as the first col of the table
   strategicLifeUnits = ['Partner','Family','Friends','Exercise','Mental health','Faith','Community','Volunteering','Career','Education','Finances','Hobbies','Online entmt','Offline entmt','Eating/Sleeping','Daily living']
