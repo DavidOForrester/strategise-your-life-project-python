@@ -17,26 +17,28 @@
     <title>Strategise Your Life</title>
   </head>
   <body>
-    <h1>Strategise Your Life</h1>
-    <div>
-      Satisfaction: How staisfied with the unit are you now.<br />
-      Importance: How importance each unit is to you.
+    <div class="text-center" style="background:lightgrey">
+      <h1>Strategise Your Life</h1>
+      <div>
+        Satisfaction: How staisfied with the unit are you now.<br />
+        Importance: How importance each unit is to you.
+      </div>
     </div>
     <br />
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-">
-          <div class="table_container">
-            {% block table_content %} {% endblock %}
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-xs-">
+            <div class="table_container">
+              {% block table_content %} {% endblock %}
+            </div>
           </div>
-        </div>
-        <div class="col-xs-">
-          <div class="visual_container">
-            {% block visual_content %} {% endblock %}
+          <div class="col-xs-">
+            <div class="visual_container">
+              {% block visual_content %} {% endblock %}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
