@@ -1,10 +1,8 @@
-import numpy as np
-import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import sqlite3
 from adjustText import adjust_text
+from io import BytesIO
 
 
 def CreateVisual(df):
@@ -95,4 +93,7 @@ def CreateVisual(df):
   ax.spines['left'].set_visible(False)
   ax.spines['right'].set_visible(False)
 
-  plt.savefig('static/visual.png', bbox_inches='tight') 
+  buf = BytesIO()
+  plt.savefig(buf, format="png", bbox_inches='tight')
+
+  return(buf)

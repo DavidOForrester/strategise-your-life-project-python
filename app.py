@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 from form import FullForm
 from visuals import CreateVisual
+import base64
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fdjkslrewpfjdsklsdfjker'
@@ -67,7 +68,8 @@ def home():
         df.loc[strategicLifeUnit, 'timeInvested'] = float(timeInvested)
 
       #run the python visual code here
-      CreateVisual(df)
+      buf = CreateVisual(df)
+      visualData = base64.b64encode(buf.getbuffer()).decode("ascii")
 
   return render_template("home.html", 
                          data=data, 
@@ -75,7 +77,8 @@ def home():
                          strategicLifeUnits=strategicLifeUnits, 
                          zip=zip, 
                          timeTotal=timeTotal, 
-                         tableCellColour=tableCellColour)
+                         tableCellColour=tableCellColour,
+                         visual=visualData)
 
 if __name__ == '__main__':
   app.run(debug=True)
