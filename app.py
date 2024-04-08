@@ -53,16 +53,15 @@ def home():
         importance = float(data.get(group[1]))
         timeInvested = data.get(group[2])
 
-        #determines the time total
-        #timeTotal = timeTotal + float(timeInvested)
-
         #checks if the user has left cells blank
-        if satisfaction == "":
-            satisfaction = 0
-        elif importance == "":
-            importance = 0
-        elif timeInvested == "" or timeInvested == '0':
+        if timeInvested == "":
+           timeInvested = 0.1
+           timeTotal = timeTotal + 0
+        elif timeInvested == '0':
             timeInvested = 0.1
+            timeTotal = timeTotal + 0
+        else:
+            timeTotal = timeTotal + float(timeInvested)
 
         #updates the data frame
         df.loc[strategicLifeUnit, 'satisfaction'] = satisfaction
