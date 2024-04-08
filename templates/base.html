@@ -16,29 +16,37 @@
     />
     <title>Strategise Your Life</title>
   </head>
-  <body>
-    <div class="text-center" style="background:lightgrey">
+  <body style="background: lightgrey">
+    <div class="text-center" style="background: darkgray">
       <h1>Strategise Your Life</h1>
-      <div>
-        Satisfaction: How staisfied are you with each unit.<br />
-        Importance: How important is each unit to you.
-      </div>
-    </div>
-    <br />
-      <div class="container-fluid">
+      <div class="container">
         <div class="row justify-content-center">
-          <div class="col-xs-">
-            <div class="table_container">
-              {% block table_content %} {% endblock %}
-            </div>
+          <div class="col" style="margin-bottom: 10px;">
+            Satisfaction: How staisfied are you with each unit.<br />
+            Importance: How important is each unit to you.
           </div>
-          <div class="col-xs-">
-            <div class="visual_container">
-              {% block visual_content %} {% endblock %}
-            </div>
+          <div class="col d-flex justify-content-center align-items-center">
+            <a href="/download_csv">
+              <button class="btn btn-info">Download Data</button>
+            </a>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container-fluid" style="margin-top: 10px;">
+      <div class="row justify-content-center">
+        <div class="col-xs-" style="background: white">
+          <div class="table_container">
+            {% block table_content %} {% endblock %}
+          </div>
+        </div>
+        <div class="col-xs-" style="background: white">
+          <div class="visual_container">
+            {% block visual_content %} {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

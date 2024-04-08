@@ -9,5 +9,4 @@ class SimpleForm(FlaskForm):
 
 #full form drawing on the other form
 class FullForm(FlaskForm):
-  submit = SubmitField("Submit")
   simpleForm = FieldList(FormField(SimpleForm), min_entries=16)

@@ -46,7 +46,7 @@ def home():
       grouped_data = [dataList[i:i+3] for i in range(0, len(dataList), 3)]
 
       # Iterate over groups
-      for group in grouped_data[:-1]:
+      for group in grouped_data:
         #extracts the data from the dic
         strategicLifeUnit = int(group[0].split('-')[1])
         satisfaction = float(data.get(group[0]))

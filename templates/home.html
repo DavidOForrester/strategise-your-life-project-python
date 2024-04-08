@@ -4,44 +4,40 @@
 <form method="POST">
   <table class="table table-sm">
     <thead>
-      <tr>
+      <tr align="center">
         <th>Strategic Life Unit</th>
         <th>Satisfaction</th>
         <th>Importance</th>
-        <th>Time Invested (Weekly)</th>
+        <th>Time Invested</th>
       </tr>
     </thead>
     <tbody>
       {% for strategicLifeUnit, simpleForm, tableCellColour in zip(strategicLifeUnits, form.simpleForm, tableCellColour) %}
       <tr bgcolor = {{ tableCellColour }}>
-        <td>{{ strategicLifeUnit }}</td>
-        <td>{{ simpleForm.satisfaction }}</td>
-        <td>{{ simpleForm.importance }}</td>
-        <td>{{ simpleForm.timeInvested }}</td>
+        <td style="vertical-align: middle;">{{ strategicLifeUnit }}</td>
+        <td>{{ simpleForm.satisfaction(class_='form-control') }}</td>
+        <td>{{ simpleForm.importance(class_='form-control') }}</td>
+        <td style="width: 130px;">{{ simpleForm.timeInvested(class_='form-control') }}</td>
       </tr>
       {% endfor %}
       <tr>
-        <td>{{ form.submit }}</td>
+        <td><button type="submit" class="btn btn-primary">Update Plot</button></td>
         <td></td>
-        <td></td>
-        <td>Total: {{ timeTotal }} / 168</td>
+        <td colspan="2" style="vertical-align: middle; text-align: right;">Total: {{ timeTotal }} / 168</td>
       </tr>
     </tbody>
   </table>
 </form>
-<a href="/download_csv">
-  <button>Download Data</button>
-</a>
 {% endblock %}
-
 {% block visual_content %}
 <img src="data:image/png;base64,{{ visual }}"/>
 <div>
+  <h5 class="text-center">Guide</h5>
   <ul>
+    <li>Top left: Areas of high urgency.</li> 
     <li>Top right: Keep spending time on these.</li> 
-    <li>Top left: Need more focus urgently.</li> 
-    <li>Bottom right: When you have time focus here.</li> 
     <li>Bottom left: Make sure time is not being wasted here.</li> 
+    <li>Bottom right: Try to reduce the size of the bubbles here.</li> 
   </ul>
 </div>
 {% endblock %}
