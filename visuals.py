@@ -37,12 +37,12 @@ def CreateVisual(df):
   plt.ylabel('Importance', **hfont)
 
   #x and y limits
-  plt.xlim((-10,110))
-  plt.ylim((-10,110))
+  plt.xlim((-1,11))
+  plt.ylim((-1,11))
 
   #adding the 4 quadrant lines
-  plt.plot([50,50],[-10,110], linewidth=1, color='grey', linestyle="dashed", zorder=1)
-  plt.plot([-10,110],[50,50], linewidth=1, color='grey', linestyle="dashed", zorder=1)
+  plt.plot([5,5],[-1,11], linewidth=1, color='grey', linestyle="dashed", zorder=1)
+  plt.plot([-1,11],[5,5], linewidth=1, color='grey', linestyle="dashed", zorder=1)
 
   #Plots the data points
   plt.scatter(df['satisfaction'], df['importance'], df['timeInvested']*300, c=colour_list, edgecolors='white')
@@ -53,10 +53,10 @@ def CreateVisual(df):
   for i, txt in enumerate(df['strategicLifeUnits']):
     heightAdjust = 0 #(df['timeInvested'][i] / totalTime) * 110 / 2
 
-    if df['satisfaction'][i] > 70:
-      labelOffset = -15
+    if df['satisfaction'][i] > 7:
+      labelOffset = -1.5
     else:
-      labelOffset = 5
+      labelOffset = 0.5
 
     texts.append(ax.annotate(txt, 
                 (df['satisfaction'][i], 
@@ -70,24 +70,24 @@ def CreateVisual(df):
 
   #adding high and low text and arrows
   #y axis
-  ax.annotate("HIGH", (-10,110), xytext=(-13, 104), rotation=90)
-  ax.annotate("LOW", (-10,-10), xytext=(-13,-8), rotation=90)
+  ax.annotate("HIGH", (-0,1.1), xytext=(-1.3, 10.4), rotation=90)
+  ax.annotate("LOW", (-1,-1), xytext=(-1.3,-0.8), rotation=90)
 
   #x axis
-  ax.annotate("HIGH", (-10,-10), xytext=(104,-13))
-  ax.annotate("LOW", (-10,-10), xytext=(-9,-13))
+  ax.annotate("HIGH", (-1,-1), xytext=(10.4,-1.3))
+  ax.annotate("LOW", (-1,-1), xytext=(-0.9,-1.3))
 
   #adding top left rec to help call out
-  recTL = plt.Rectangle((-10,50), 60, 110, color="#ebebeb", zorder=0)
+  recTL = plt.Rectangle((-1,5), 6, 11, color="#ebebeb", zorder=0)
   ax.add_patch(recTL)
 
-  recTR = plt.Rectangle((50,50), 60, 110, color="#f5f5f5", zorder=0)
+  recTR = plt.Rectangle((5,5), 6, 11, color="#f5f5f5", zorder=0)
   ax.add_patch(recTR)
 
-  recBL = plt.Rectangle((-10,-10), 60, 60, color="#f5f5f5", zorder=0)
+  recBL = plt.Rectangle((-1,-1), 6, 6, color="#f5f5f5", zorder=0)
   ax.add_patch(recBL)
 
-  recBR = plt.Rectangle((50,-10), 60, 60, color="#f5f5f5", zorder=0)
+  recBR = plt.Rectangle((5,-1), 6, 6, color="#f5f5f5", zorder=0)
   ax.add_patch(recBR)
 
   # Turn off tick labels

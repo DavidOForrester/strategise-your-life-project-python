@@ -64,8 +64,8 @@ def home():
             timeTotal = timeTotal + float(timeInvested)
 
         #updates the data frame
-        df.loc[strategicLifeUnit, 'satisfaction'] = satisfaction
-        df.loc[strategicLifeUnit, 'importance'] = importance
+        df.loc[strategicLifeUnit, 'satisfaction'] = round(satisfaction, 2)
+        df.loc[strategicLifeUnit, 'importance'] = round(importance, 2)
         df.loc[strategicLifeUnit, 'timeInvested'] = float(timeInvested)
 
       #run the python visual code here

@@ -15,8 +15,8 @@
       {% for strategicLifeUnit, simpleForm, tableCellColour in zip(strategicLifeUnits, form.simpleForm, tableCellColour) %}
       <tr bgcolor = {{ tableCellColour }}>
         <td style="vertical-align: middle;">{{ strategicLifeUnit }}</td>
-        <td>{{ simpleForm.satisfaction(class_='form-control') }}</td>
-        <td>{{ simpleForm.importance(class_='form-control') }}</td>
+        <td>{{ simpleForm.satisfaction(class_='form-control', max=10) }}</td>
+        <td>{{ simpleForm.importance(class_='form-control', max=10) }}</td>
         <td style="width: 130px;">{{ simpleForm.timeInvested(class_='form-control') }}</td>
       </tr>
       {% endfor %}
