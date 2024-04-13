@@ -29,7 +29,7 @@ def CreateVisual(df):
 
   colour_list = [colours[group] for group in df['strategicLifeAreas']]
 
-  fig = plt.figure(figsize=(8,8))
+  fig = plt.figure(figsize=(8,8), facecolor='#f7f7f7')
   ax = fig.add_subplot(111)
 
   #Setting up the text on the plot
@@ -78,16 +78,16 @@ def CreateVisual(df):
   ax.annotate("LOW", (-1,-1), xytext=(-0.9,-1.3))
 
   #adding top left rec to help call out
-  recTL = plt.Rectangle((-1,5), 6, 11, color="#ebebeb", zorder=0)
+  recTL = plt.Rectangle((-1,5), 6, 11, color="#CED8DE", zorder=0)
   ax.add_patch(recTL)
 
-  recTR = plt.Rectangle((5,5), 6, 11, color="#f5f5f5", zorder=0)
+  recTR = plt.Rectangle((5,5), 6, 11, color="#E7EDF3", zorder=0)
   ax.add_patch(recTR)
 
-  recBL = plt.Rectangle((-1,-1), 6, 6, color="#f5f5f5", zorder=0)
+  recBL = plt.Rectangle((-1,-1), 6, 6, color="#E7EDF3", zorder=0)
   ax.add_patch(recBL)
 
-  recBR = plt.Rectangle((5,-1), 6, 6, color="#f5f5f5", zorder=0)
+  recBR = plt.Rectangle((5,-1), 6, 6, color="#E7EDF3", zorder=0)
   ax.add_patch(recBR)
 
   # Turn off tick labels
